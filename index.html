@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our World — The OASIS Flagship Metaverse</title>
+<meta name="description" content="Our World is the OASIS flagship experience — a geo-located AR/VR metaverse where real-world positive actions earn karma and shape the digital world around you. Powered by OGEngine, HoloNET and the OASIS API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#030714;--bg-card:rgba(10,18,50,.75);--bg-card2:rgba(8,14,38,.9);
+  --cyan:#00e5ff;--green:#00cc88;--gold:#f0a500;
+  --heading:#e8f4ff;--heading-sub:#a8c8f0;
+  --text:#d0e4ff;--text-dim:#6a80a8;
+  --border:rgba(0,229,255,.12);--border-g:rgba(0,204,136,.18);
+  --glow:rgba(0,229,255,.15);--glow-g:rgba(0,204,136,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;min-height:100vh}
+canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.scanlines{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px)}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:24px;padding:0 40px;height:64px;background:rgba(3,7,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;letter-spacing:.12em;color:var(--cyan)}
+.nav-brand span{color:var(--green)}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--green);border:1px solid rgba(0,204,136,.35);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{background:rgba(0,204,136,.08);border-color:rgba(0,204,136,.6)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--green);border-radius:2px}
+@media(max-width:800px){.nav{padding:0 20px}.nav-links{display:none}.nav-hamburger{display:flex}}
+
+/* ── SECTIONS ── */
+.section{position:relative;z-index:2;padding:90px 40px;max-width:1180px;margin:0 auto}
+.section-kicker{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.25em;color:var(--cyan);margin-bottom:14px;text-align:center}
+.section-kicker.green{color:var(--green)}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:.06em;color:var(--heading);text-align:center;margin-bottom:14px}
+.section-line{display:block;width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);margin:0 auto 24px}
+.section-line.green{background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.section-sub{font-size:16px;color:#a8bfd8;text-align:center;max-width:700px;margin:0 auto 50px;line-height:1.75}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 40px 80px}
+.hero-kicker{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--green);margin-bottom:20px;opacity:.85}
+.hero-globe{margin-bottom:28px}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(24px,4.5vw,52px);font-weight:900;letter-spacing:.05em;color:var(--heading);line-height:1.15;max-width:900px;animation:fadeUp .8s ease both}
+.hero-title span{color:var(--green);text-shadow:0 0 30px rgba(0,204,136,.4)}
+.hero-title span.cyan{color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,.4)}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:#a8bfd8;max-width:700px;line-height:1.75;margin:22px auto 36px;animation:fadeUp .8s .15s ease both}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;animation:fadeUp .8s .25s ease both}
+.hero-badge{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.15em;color:var(--cyan);background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:999px;padding:7px 16px}
+.hero-badge.green{color:var(--green);background:rgba(0,204,136,.06);border-color:rgba(0,204,136,.25)}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .35s ease both}
+.btn-primary{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:#000;background:var(--green);border:none;border-radius:10px;padding:14px 30px;text-decoration:none;transition:filter .2s,transform .2s;display:inline-block}
+.btn-primary:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.btn-secondary{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--cyan);background:transparent;border:2px solid rgba(0,229,255,.4);border-radius:10px;padding:13px 28px;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;display:inline-block}
+.btn-secondary:hover{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.7);transform:translateY(-2px)}
+.btn-green{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--green);background:transparent;border:2px solid rgba(0,204,136,.4);border-radius:10px;padding:13px 28px;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;display:inline-block}
+.btn-green:hover{background:rgba(0,204,136,.08);border-color:rgba(0,204,136,.7);transform:translateY(-2px)}
+
+/* ── OVERVIEW ── */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1080px;margin:0 auto}
+.overview-text p{font-size:16px;color:#a8bfd8;line-height:1.8;margin-bottom:18px}
+.overview-text p:last-child{margin-bottom:0}
+.overview-img{border-radius:16px;overflow:hidden;border:1px solid var(--border-g);box-shadow:0 0 60px rgba(0,204,136,.08)}
+.overview-img img{width:100%;display:block}
+@media(max-width:800px){.overview-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ── FEATURE CARDS ── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .3s,border-color .3s,box-shadow .3s;will-change:transform}
+.feat-card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.28);box-shadow:0 12px 40px rgba(0,229,255,.07)}
+.feat-card.green-card{border-color:var(--border-g)}
+.feat-card.green-card:hover{border-color:rgba(0,204,136,.35);box-shadow:0 12px 40px var(--glow-g)}
+.feat-icon{font-size:26px;line-height:1}
+.feat-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--cyan)}
+.feat-kicker.green{color:var(--green)}
+.feat-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.07em;color:var(--heading)}
+.feat-desc{font-size:14px;color:#a8bfd8;line-height:1.65;flex:1}
+
+/* ── KARMA BAND ── */
+.karma-band{position:relative;z-index:2;background:linear-gradient(135deg,rgba(0,30,18,.9),rgba(0,50,30,.7));border-top:1px solid rgba(0,204,136,.15);border-bottom:1px solid rgba(0,204,136,.15);padding:90px 40px;overflow:hidden}
+.karma-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,204,136,.08),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(0,229,255,.05),transparent 60%);pointer-events:none}
+.karma-inner{position:relative;max-width:1080px;margin:0 auto}
+.karma-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:40px 0 48px}
+.karma-step{text-align:center;padding:20px 24px;background:rgba(0,204,136,.07);border:1px solid rgba(0,204,136,.2);border-radius:12px;min-width:140px}
+.karma-step-icon{font-size:28px;margin-bottom:8px}
+.karma-step-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--green)}
+.karma-step-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4}
+.karma-arrow{font-size:22px;color:var(--green);opacity:.5;padding:0 8px;flex-shrink:0}
+.karma-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
+.karma-eg{display:flex;align-items:center;gap:12px;background:rgba(0,204,136,.05);border:1px solid rgba(0,204,136,.14);border-radius:10px;padding:14px 18px}
+.karma-eg-icon{font-size:20px;flex-shrink:0}
+.karma-eg-text{font-size:14px;color:#a8bfd8;line-height:1.4}
+.karma-eg-pts{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--green);margin-left:auto;flex-shrink:0;padding-left:8px}
+
+/* ── VIDEO GRID ── */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.vid-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.vid-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,204,136,.07)}
+.vid-frame{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vid-info{padding:18px 20px}
+.vid-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--green);margin-bottom:6px}
+.vid-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--heading);margin-bottom:8px}
+.vid-text{font-size:13px;color:#a8bfd8;line-height:1.6}
+
+/* ── OASIS INTEGRATION ── */
+.integration-band{position:relative;z-index:2;background:rgba(0,229,255,.025);border-top:1px solid rgba(0,229,255,.08);border-bottom:1px solid rgba(0,229,255,.08);padding:80px 40px;text-align:center}
+.pill-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.pill{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--cyan);background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s}
+.pill:hover{background:rgba(0,229,255,.12);border-color:rgba(0,229,255,.45)}
+.pill.green{color:var(--green);background:rgba(0,204,136,.06);border-color:rgba(0,204,136,.2)}
+.pill.green:hover{background:rgba(0,204,136,.12);border-color:rgba(0,204,136,.45)}
+
+/* ── ROADMAP ── */
+.road-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.road-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .3s,border-color .3s}
+.road-card:hover{transform:translateY(-4px)}
+.road-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--cyan)}
+.road-kicker.green{color:var(--green)}
+.road-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.07em;color:var(--heading)}
+.road-desc{font-size:14px;color:#a8bfd8;line-height:1.65;flex:1}
+
+/* ── COMMUNITY CTA ── */
+.cta-band{position:relative;z-index:2;padding:100px 40px;text-align:center;background:linear-gradient(180deg,transparent,rgba(0,204,136,.04),transparent)}
+.cta-title{font-family:'Orbitron',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:.06em;color:var(--heading);margin-bottom:16px}
+.cta-sub{font-size:16px;color:#a8bfd8;max-width:600px;margin:0 auto 36px;line-height:1.75}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:2;padding:60px 40px 36px;border-top:1px solid rgba(255,255,255,.06)}
+footer{--text-dim:#a8bfd8}
+.footer-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:40px;max-width:1100px;margin:0 auto 48px}
+.footer-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--green);margin-bottom:12px}
+.footer-desc{font-size:14px;color:#a8bfd8;line-height:1.7;margin-bottom:16px}
+.footer-col h4{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--text-dim);margin-bottom:14px}
+.footer-col a{display:block;font-size:14px;color:#a8bfd8;text-decoration:none;margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--green)}
+.footer-copy{text-align:center;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;color:#8090b0;padding-top:28px;border-top:1px solid rgba(255,255,255,.05);max-width:1100px;margin:0 auto}
+
+/* ── GLOBE ANIMATION ── */
+@keyframes globeSpin{to{transform:rotateY(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes orbit{from{transform:rotate(0deg) translateX(80px) rotate(0deg)}to{transform:rotate(360deg) translateX(80px) rotate(-360deg)}}
+.globe-ring-slow{animation:globeSpin 18s linear infinite;transform-origin:100px 100px;transform-box:fill-box}
+.globe-ring-fast{animation:globeSpin 10s linear infinite;transform-origin:100px 100px;transform-box:fill-box}
+.dot-pulse{animation:pulse 2.5s ease-in-out infinite}
+.dot-pulse2{animation:pulse 3.2s ease-in-out .8s infinite}
+.dot-pulse3{animation:pulse 2.8s ease-in-out 1.4s infinite}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="scanlines"></div>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <a href="https://oasisomniverse.one" class="nav-brand">
+    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="30" stroke="#00e5ff" stroke-width="7"/>
+      <circle cx="50" cy="50" r="18" stroke="#00e5ff" stroke-width="7"/>
+      <ellipse cx="50" cy="50" rx="42" ry="13" transform="rotate(-30 50 50)" stroke="#00e5ff" stroke-width="3.5"/>
+      <circle cx="85" cy="27" r="5" fill="#00e5ff"/>
+    </svg>
+    OASIS <span>/ OUR WORLD</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">FEATURES</a>
+    <a href="#karma">KARMA</a>
+    <a href="#videos">VIDEOS</a>
+    <a href="#roadmap">ROADMAP</a>
+    <a href="https://oasisomniverse.one" target="_blank">ECOSYSTEM</a>
+  </div>
+  <a href="https://ourworldthegame.com" target="_blank" class="nav-cta">EXPLORE</a>
+  <div class="nav-hamburger" onclick="this.classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-kicker">OUR WORLD · WEB5 FLAGSHIP GAME</div>
+
+  <div class="hero-globe">
+    <svg viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="pg" cx="38%" cy="32%" r="65%">
+          <stop offset="0%" stop-color="#062818"/>
+          <stop offset="60%" stop-color="#03140c"/>
+          <stop offset="100%" stop-color="#030714"/>
+        </radialGradient>
+        <radialGradient id="glow-g" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00cc88" stop-opacity=".18"/>
+          <stop offset="100%" stop-color="#00cc88" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="globe-clip">
+          <circle cx="100" cy="100" r="70"/>
+        </clipPath>
+        <filter id="dot-glow">
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- outer glow halo -->
+      <circle cx="100" cy="100" r="88" fill="url(#glow-g)"/>
+      <!-- planet body -->
+      <circle cx="100" cy="100" r="70" fill="url(#pg)" stroke="#00cc88" stroke-width="1.2" opacity=".75"/>
+      <!-- latitude lines (static) -->
+      <g clip-path="url(#globe-clip)" opacity=".35">
+        <ellipse cx="100" cy="100" rx="70" ry="20" fill="none" stroke="#00e5ff" stroke-width=".8"/>
+        <ellipse cx="100" cy="72"  rx="58" ry="14" fill="none" stroke="#00e5ff" stroke-width=".6"/>
+        <ellipse cx="100" cy="128" rx="58" ry="14" fill="none" stroke="#00e5ff" stroke-width=".6"/>
+        <ellipse cx="100" cy="52"  rx="40" ry="9"  fill="none" stroke="#00e5ff" stroke-width=".5"/>
+        <ellipse cx="100" cy="148" rx="40" ry="9"  fill="none" stroke="#00e5ff" stroke-width=".5"/>
+      </g>
+      <!-- longitude lines slow spin -->
+      <g clip-path="url(#globe-clip)" class="globe-ring-slow" opacity=".3">
+        <ellipse cx="100" cy="100" rx="28" ry="70" fill="none" stroke="#00cc88" stroke-width=".9"/>
+        <ellipse cx="100" cy="100" rx="55" ry="70" fill="none" stroke="#00cc88" stroke-width=".7"/>
+      </g>
+      <!-- longitude lines fast spin -->
+      <g clip-path="url(#globe-clip)" class="globe-ring-fast" opacity=".18" style="animation-direction:reverse">
+        <ellipse cx="100" cy="100" rx="40" ry="70" fill="none" stroke="#00e5ff" stroke-width=".8"/>
+      </g>
+      <!-- location pin dots -->
+      <circle class="dot-pulse"  cx="122" cy="82"  r="3.5" fill="#00cc88" filter="url(#dot-glow)"/>
+      <circle class="dot-pulse2" cx="74"  cy="108" r="3"   fill="#00e5ff" filter="url(#dot-glow)"/>
+      <circle class="dot-pulse3" cx="138" cy="115" r="2.5" fill="#00cc88" filter="url(#dot-glow)"/>
+      <circle class="dot-pulse"  cx="88"  cy="75"  r="2.5" fill="#00e5ff" filter="url(#dot-glow)" style="animation-delay:.6s"/>
+      <circle class="dot-pulse2" cx="110" cy="130" r="2"   fill="#00cc88" filter="url(#dot-glow)"/>
+      <!-- equator highlight -->
+      <ellipse cx="100" cy="100" rx="70" ry="70" fill="none" stroke="#00cc88" stroke-width="1" opacity=".2"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">The <span>Geo-Located</span> Metaverse<br>Where Good Deeds <span class="cyan">Power</span> Your World</h1>
+  <p class="hero-sub">Our World is the OASIS flagship experience — an AR/VR metaverse anchored to the real world, where every positive action you take earns karma, unlocks abilities and shapes the digital landscape around you.</p>
+
+  <div class="hero-badges">
+    <span class="hero-badge green">GEO-LOCATED</span>
+    <span class="hero-badge green">AR / VR</span>
+    <span class="hero-badge">WEB4 KARMA</span>
+    <span class="hero-badge">OGENGINE POWERED</span>
+    <span class="hero-badge">HOLONET P2P</span>
+    <span class="hero-badge">OASIS INTEGRATED</span>
+  </div>
+
+  <div class="hero-actions">
+    <a href="https://ourworldthegame.com" target="_blank" class="btn-primary">EXPLORE OUR WORLD</a>
+    <a href="#features" class="btn-secondary">LEARN MORE</a>
+    <a href="#videos" class="btn-green">WATCH DEMOS</a>
+  </div>
+</section>
+
+<!-- ── WHAT IS OUR WORLD ── -->
+<section class="section" id="overview" style="background:rgba(255,255,255,.004)">
+  <div class="section-kicker green">THE VISION</div>
+  <h2 class="section-title">A NEW KIND OF GAME</h2>
+  <span class="section-line green"></span>
+  <div class="overview-grid">
+    <div class="overview-text reveal">
+      <p>Our World is not just a game — it's a movement. Built on the OASIS platform and powered by OGEngine, it overlays a rich digital world onto the real one using augmented and virtual reality, anchored to real GPS coordinates around the globe.</p>
+      <p>Every location you visit, every positive action you take — planting trees, helping neighbours, volunteering, reducing waste — earns <strong style="color:var(--green)">Karma</strong>. Karma is your currency, your reputation, and your power in Our World. The better you are in the real world, the stronger you become in the digital one.</p>
+      <p>Quests, achievements and inventory are shared across the entire OASIS Omniverse via OGEngine — complete a mission in ODOOM, carry the rewards into Our World. One unified identity. One interconnected universe.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a href="https://ourworldthegame.com" target="_blank" class="btn-primary">VISIT OFFICIAL SITE</a>
+        <a href="https://oasisomniverse.one" target="_blank" class="btn-green">OASIS ECOSYSTEM</a>
+      </div>
+    </div>
+    <div class="overview-img reveal">
+      <img src="img/ourworld.jpg" alt="Our World — OASIS Flagship Metaverse">
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="section" id="features">
+  <div class="section-kicker">CAPABILITIES</div>
+  <h2 class="section-title">WHAT OUR WORLD OFFERS</h2>
+  <span class="section-line"></span>
+  <p class="section-sub">Eight pillars that make Our World unlike anything else in the metaverse space.</p>
+
+  <div class="feat-grid">
+    <div class="feat-card green-card reveal">
+      <div class="feat-icon">🌍</div>
+      <div class="feat-kicker green">CORE MECHANIC</div>
+      <div class="feat-title">GEO-LOCATED GAMEPLAY</div>
+      <div class="feat-desc">Explore the real world through your device's GPS and camera. Discover hidden digital layers, quests and locations overlaid onto physical coordinates around the globe.</div>
+    </div>
+    <div class="feat-card green-card reveal">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-kicker green">PROGRESSION</div>
+      <div class="feat-title">KARMA SYSTEM</div>
+      <div class="feat-desc">Real-world positive actions earn Karma points. Plant a tree, volunteer, clean up litter — your good deeds directly power your in-game abilities, land ownership and governance rights.</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🕶️</div>
+      <div class="feat-kicker">IMMERSION</div>
+      <div class="feat-title">AR / VR EXPERIENCE</div>
+      <div class="feat-desc">Seamlessly switch between augmented reality — digital layers on the real world — and full VR immersion. One game, two realities, infinite possibilities.</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🗺️</div>
+      <div class="feat-kicker">OWNERSHIP</div>
+      <div class="feat-title">WEB4 GEONFTS</div>
+      <div class="feat-desc">Digital assets anchored to real-world GPS coordinates via the OASIS NFT API. Own, trade and develop a piece of the digital landscape that sits on top of the physical world.</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">⚙️</div>
+      <div class="feat-kicker">GAME ENGINE</div>
+      <div class="feat-title">OGENGINE POWERED</div>
+      <div class="feat-desc">Built on the Omniverse Game Engine. Shared quests, inventory, karma and achievements span Our World, ODOOM, OQUAKE and every future OASIS-connected game.</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">🔗</div>
+      <div class="feat-kicker">CONNECTIVITY</div>
+      <div class="feat-title">OASIS INTEGRATION</div>
+      <div class="feat-desc">50+ Web2 and Web3 data providers through a single OASIS API. One universal avatar and wallet. Decentralised identity that travels everywhere you go.</div>
+    </div>
+    <div class="feat-card green-card reveal">
+      <div class="feat-icon">♾️</div>
+      <div class="feat-kicker green">INFRASTRUCTURE</div>
+      <div class="feat-title">HOLONET P2P</div>
+      <div class="feat-desc">HoloNET HyperNET integration enables infinite simultaneous players without central servers. The world scales organically as the community grows.</div>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">⭐</div>
+      <div class="feat-kicker">CONTENT</div>
+      <div class="feat-title">STAR QUESTS</div>
+      <div class="feat-desc">Publish and earn from your own quests via the STAR CLI and ODK. Bring your own missions into Our World and take community content back to the STAR ecosystem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KARMA SYSTEM ── -->
+<div class="karma-band" id="karma">
+  <div class="karma-inner">
+    <div class="section-kicker green" style="text-align:center;margin-bottom:14px">THE CORE LOOP</div>
+    <h2 class="section-title">THE KARMA SYSTEM</h2>
+    <span class="section-line green" style="display:block;width:60px;height:2px;background:linear-gradient(90deg,transparent,#00cc88,transparent);margin:0 auto 20px"></span>
+    <p style="font-size:16px;color:#a8bfd8;text-align:center;max-width:680px;margin:0 auto 40px;line-height:1.75">Our World uniquely ties real-world impact to in-game progression. The better you are in the real world, the stronger — and more capable — you become in the digital one.</p>
+
+    <div class="karma-flow reveal">
+      <div class="karma-step">
+        <div class="karma-step-icon">🌱</div>
+        <div class="karma-step-label">REAL ACTION</div>
+        <div class="karma-step-desc">Do something positive in the real world</div>
+      </div>
+      <div class="karma-arrow">→</div>
+      <div class="karma-step">
+        <div class="karma-step-icon">✅</div>
+        <div class="karma-step-label">VERIFIED</div>
+        <div class="karma-step-desc">Action logged via OASIS & community</div>
+      </div>
+      <div class="karma-arrow">→</div>
+      <div class="karma-step">
+        <div class="karma-step-icon">⚡</div>
+        <div class="karma-step-label">KARMA EARNED</div>
+        <div class="karma-step-desc">Points credited to your OASIS avatar</div>
+      </div>
+      <div class="karma-arrow">→</div>
+      <div class="karma-step">
+        <div class="karma-step-icon">🏆</div>
+        <div class="karma-step-label">POWER UP</div>
+        <div class="karma-step-desc">Unlock abilities, land, governance & more</div>
+      </div>
+    </div>
+
+    <div class="karma-examples reveal">
+      <div class="karma-eg"><div class="karma-eg-icon">🌳</div><div class="karma-eg-text">Plant a tree</div><div class="karma-eg-pts">+50 karma</div></div>
+      <div class="karma-eg"><div class="karma-eg-icon">🤝</div><div class="karma-eg-text">Volunteer locally</div><div class="karma-eg-pts">+100 karma</div></div>
+      <div class="karma-eg"><div class="karma-eg-icon">♻️</div><div class="karma-eg-text">Clean up litter</div><div class="karma-eg-pts">+30 karma</div></div>
+      <div class="karma-eg"><div class="karma-eg-icon">🚴</div><div class="karma-eg-text">Cycle instead of drive</div><div class="karma-eg-pts">+20 karma</div></div>
+      <div class="karma-eg"><div class="karma-eg-icon">📚</div><div class="karma-eg-text">Teach a skill</div><div class="karma-eg-pts">+60 karma</div></div>
+      <div class="karma-eg"><div class="karma-eg-icon">💧</div><div class="karma-eg-text">Reduce water usage</div><div class="karma-eg-pts">+15 karma</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── VIDEOS ── -->
+<section class="section" id="videos" style="background:rgba(255,255,255,.004)">
+  <div class="section-kicker green">SEE IT IN ACTION</div>
+  <h2 class="section-title">WATCH OUR WORLD</h2>
+  <span class="section-line green"></span>
+  <p class="section-sub">Live demos, AR prototypes and deep-dives into the geo-located gameplay and OASIS integration.</p>
+
+  <div class="vid-grid">
+    <div class="vid-card reveal">
+      <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/s4aCSoD84pw" title="Our World GeoNFT AR Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <div class="vid-info">
+        <div class="vid-kicker">OUR WORLD · LIVE DEMO</div>
+        <div class="vid-title">GEOLOCATION AR + WEB4 GEONFTS</div>
+        <div class="vid-text">A live look at Our World using geolocation AR gameplay with Web4 GeoNFTs from the OASIS NFT API.</div>
+      </div>
+    </div>
+    <div class="vid-card reveal">
+      <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/a7CePybCoA8" title="Our World AR World Explainer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <div class="vid-info">
+        <div class="vid-kicker">OUR WORLD · EXPLAINER</div>
+        <div class="vid-title">AR WORLD EXPLAINER PREVIEW</div>
+        <div class="vid-text">Preview explainer of the Our World AR experience and the vision behind the platform.</div>
+      </div>
+    </div>
+    <div class="vid-card reveal">
+      <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/1n2Zf5XG9v0" title="Our World AR Geolocation Prototype" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <div class="vid-info">
+        <div class="vid-kicker">OUR WORLD · PROTOTYPE</div>
+        <div class="vid-title">AR GEOLOCATION PROTOTYPE</div>
+        <div class="vid-text">Early prototype footage of the Our World AR geolocation system in action.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OASIS INTEGRATION ── -->
+<div class="integration-band" id="oasis">
+  <div class="section-kicker" style="margin-bottom:14px">POWERED BY</div>
+  <h2 class="section-title">OASIS ECOSYSTEM INTEGRATION</h2>
+  <span class="section-line" style="display:block;width:60px;height:2px;background:linear-gradient(90deg,transparent,#00e5ff,transparent);margin:0 auto 20px"></span>
+  <p style="font-size:16px;color:#a8bfd8;max-width:680px;margin:0 auto;line-height:1.75">Our World is the flagship showcase for the entire OASIS stack — every provider, every protocol, every platform, unified through a single avatar and identity layer.</p>
+  <div class="pill-row">
+    <span class="pill green">OGEngine</span>
+    <span class="pill">OASIS API</span>
+    <span class="pill">HoloNET</span>
+    <a href="https://starnet.oasisomniverse.one" target="_blank" class="pill">STARNET</a>
+    <a href="https://oportal.oasisomniverse.one" target="_blank" class="pill">OPORTAL</a>
+    <span class="pill green">ODOOM</span>
+    <span class="pill green">OQUAKE</span>
+    <span class="pill">OASIS NFT API</span>
+    <span class="pill">HyperDrive</span>
+    <span class="pill">HyperNET P2P</span>
+    <span class="pill">WEB4 IDENTITY</span>
+    <span class="pill green">WEB5 STAR API</span>
+  </div>
+</div>
+
+<!-- ── ROADMAP ── -->
+<section class="section" id="roadmap">
+  <div class="section-kicker">WHAT'S NEXT</div>
+  <h2 class="section-title">FLIGHT MAP</h2>
+  <span class="section-line"></span>
+  <p class="section-sub">Where Our World is heading — and what's coming soon for the OASIS flagship metaverse.</p>
+
+  <div class="road-grid">
+    <div class="road-card" style="border-color:rgba(0,204,136,.28)" reveal>
+      <div class="road-kicker green">IN PROGRESS</div>
+      <div class="road-title">OUR WORLD MVP</div>
+      <div class="road-desc">Geo-located gameplay, basic AR, the full karma system and deep OASIS API integration. MVP targeting Q3 2026.</div>
+    </div>
+    <div class="road-card reveal">
+      <div class="road-kicker">COMING SOON</div>
+      <div class="road-title">HOLONET P2P INTEGRATION</div>
+      <div class="road-desc">HyperNET integration enabling infinite simultaneous players — no central servers, no scaling limits, powered by Holochain.</div>
+    </div>
+    <div class="road-card reveal">
+      <div class="road-kicker">COMING SOON</div>
+      <div class="road-title">FULL QUEST SYSTEM</div>
+      <div class="road-desc">Complete OGEngine cross-game quest integration — earn karma in ODOOM, spend it in Our World. One interconnected Omniverse.</div>
+    </div>
+    <div class="road-card reveal" style="border-style:dashed;border-color:rgba(0,204,136,.2);background:rgba(0,204,136,.03)">
+      <div class="road-kicker green">&amp; ALWAYS EVOLVING</div>
+      <div class="road-title" style="color:var(--heading-sub)">MUCH MORE TO COME...</div>
+      <div class="road-desc">More platforms, more quests, deeper karma mechanics, community tools and plenty more surprises. <a href="https://ourworldthegame.com" target="_blank" style="color:var(--green)">Stay tuned</a> — the best is yet to come.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY CTA ── -->
+<div class="cta-band">
+  <div class="section-kicker green" style="margin-bottom:14px">JOIN THE JOURNEY</div>
+  <h2 class="cta-title">THE WORLD NEEDS YOU</h2>
+  <p class="cta-sub">Our World is bigger than any single player — it grows when real people take real action. Be part of the movement shaping a better world, inside and out.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a href="https://ourworldthegame.com" target="_blank" class="btn-primary">EXPLORE OUR WORLD</a>
+    <a href="https://oasisomniverse.one" target="_blank" class="btn-secondary">OASIS ECOSYSTEM</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">OUR WORLD</div>
+      <p class="footer-desc">The OASIS flagship metaverse — a geo-located AR/VR experience where real-world positive actions shape the digital world around you.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://ourworldthegame.com" target="_blank" class="pill green" style="font-size:10px;padding:6px 14px">OFFICIAL SITE</a>
+        <a href="https://oasisomniverse.one" target="_blank" class="pill" style="font-size:10px;padding:6px 14px">OASIS OMNIVERSE</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>ECOSYSTEM</h4>
+      <a href="https://oasisomniverse.one" target="_blank">OASIS Omniverse</a>
+      <a href="https://starnet.oasisomniverse.one" target="_blank">STARNET</a>
+      <a href="https://oportal.oasisomniverse.one" target="_blank">OPORTAL</a>
+      <a href="https://holonet.oasisomniverse.one" target="_blank">HoloNET</a>
+      <a href="https://oasisomniverse.one#ecosystem" target="_blank">OGEngine</a>
+      <a href="https://oasisomniverse.one#ecosystem" target="_blank">ODOOM</a>
+      <a href="https://oasisomniverse.one#ecosystem" target="_blank">OQUAKE</a>
+    </div>
+    <div class="footer-col">
+      <h4>RESOURCES</h4>
+      <a href="https://ourworldthegame.com" target="_blank">Official Website</a>
+      <a href="https://oasisomniverse.one/founders" target="_blank">Founders NFT</a>
+      <a href="https://oasisomniverse.one#flightmap" target="_blank">Flight Map</a>
+      <a href="https://github.com/NextGenSoftwareUK" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 NextGen Software Ltd · Our World is part of the OASIS Omniverse ecosystem · <a href="https://oasisomniverse.one" style="color:inherit;text-decoration:none">oasisomniverse.one</a></p>
+</footer>
+
+<script>
+// Stars
+(function(){
+  const c=document.getElementById('stars'),ctx=c.getContext('2d');
+  function resize(){c.width=innerWidth;c.height=innerHeight}
+  resize();window.addEventListener('resize',resize);
+  const stars=Array.from({length:280},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.2,a:Math.random(),s:Math.random()*.006+.001}));
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(s=>{
+      s.a+=s.s;if(s.a>1||s.a<0)s.s*=-1;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,230,255,${s.a*0.75})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
