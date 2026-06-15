@@ -28,7 +28,7 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;letter-spacing:.12em;color:var(--cyan)}
 .nav-brand span{color:var(--green)}
 .nav-links{display:flex;gap:28px;margin-left:auto}
-.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#a8bfd8;text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--green)}
 .nav-cta{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--green);border:1px solid rgba(0,204,136,.35);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
 .nav-cta:hover{background:rgba(0,204,136,.08);border-color:rgba(0,204,136,.6)}
@@ -92,9 +92,9 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .karma-step{text-align:center;padding:20px 24px;background:rgba(0,204,136,.07);border:1px solid rgba(0,204,136,.2);border-radius:12px;min-width:140px}
 .karma-step-icon{font-size:28px;margin-bottom:8px}
 .karma-step-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--green)}
-.karma-step-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4}
+.karma-step-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4}
 .karma-arrow{font-size:22px;color:var(--green);opacity:.5;padding:0 8px;flex-shrink:0}
-.karma-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
+.karma-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;max-width:none;margin:0 auto}
 .karma-eg{display:flex;align-items:center;gap:12px;background:rgba(0,204,136,.05);border:1px solid rgba(0,204,136,.14);border-radius:10px;padding:14px 18px}
 .karma-eg-icon{font-size:20px;flex-shrink:0}
 .karma-eg-text{font-size:14px;color:#a8bfd8;line-height:1.4}
@@ -131,18 +131,20 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 /* ── COMMUNITY CTA ── */
 .cta-band{position:relative;z-index:2;padding:100px 40px;text-align:center;background:linear-gradient(180deg,transparent,rgba(0,204,136,.04),transparent)}
 .cta-title{font-family:'Orbitron',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:.06em;color:var(--heading);margin-bottom:16px}
-.cta-sub{font-size:16px;color:#a8bfd8;max-width:600px;margin:0 auto 36px;line-height:1.75}
+.cta-sub{font-size:16px;color:#a8bfd8;max-width:none;margin:0 auto 36px;line-height:1.75}
 
 /* ── FOOTER ── */
 footer{position:relative;z-index:2;padding:60px 40px 36px;border-top:1px solid rgba(255,255,255,.06)}
 footer{--text-dim:#a8bfd8}
-.footer-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:40px;max-width:1100px;margin:0 auto 48px}
-.footer-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--green);margin-bottom:12px}
-.footer-desc{font-size:14px;color:#a8bfd8;line-height:1.7;margin-bottom:16px}
-.footer-col h4{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--text-dim);margin-bottom:14px}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 1rem}.footer-brand-block{text-align:center;margin-bottom:3.5rem}.footer-brand-block .footer-desc{max-width:none;margin:0 auto 1rem}.footer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-bottom:2rem}
+.footer-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--green);margin-bottom:12px;text-align:center}
+.footer-desc{font-size:14px;color:#a8bfd8;line-height:1.7;margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center}
+.footer-col h4{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.15em;color:var(--green);margin-bottom:14px}
 .footer-col a{display:block;font-size:14px;color:#a8bfd8;text-decoration:none;margin-bottom:8px;transition:color .2s}
-.footer-col a:hover{color:var(--green)}
-.footer-copy{text-align:center;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;color:#8090b0;padding-top:28px;border-top:1px solid rgba(255,255,255,.05);max-width:1100px;margin:0 auto}
+footer a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(0,204,136,.8)) drop-shadow(0 0 40px rgba(0,204,136,.4))}
+..footer-copy{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:1rem}
+.footer-copy p{color:#a8bfd8;font-size:.82rem}
+.footer-copy a{color:#a8bfd8;text-decoration:none}.footer-copy a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(0,204,136,.8)) drop-shadow(0 0 40px rgba(0,204,136,.4))}
 
 /* ── GLOBE ANIMATION ── */
 @keyframes globeSpin{to{transform:rotateY(360deg)}}
@@ -154,8 +156,11 @@ footer{--text-dim:#a8bfd8}
 .dot-pulse{animation:pulse 2.5s ease-in-out infinite}
 .dot-pulse2{animation:pulse 3.2s ease-in-out .8s infinite}
 .dot-pulse3{animation:pulse 2.8s ease-in-out 1.4s infinite}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+.hero>*:not(.hero-bg){position:relative;z-index:1}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
+a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(0,204,136,.8)) drop-shadow(0 0 40px rgba(0,204,136,.4))}
 </style>
 </head>
 <body>
@@ -186,57 +191,105 @@ footer{--text-dim:#a8bfd8}
 
 <!-- ── HERO ── -->
 <section class="hero">
+  <svg class="hero-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="ow-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00cc88" stop-opacity=".10"/>
+        <stop offset="100%" stop-color="#030714" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="ow-soft"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+
+    <ellipse cx="720" cy="320" rx="660" ry="440" fill="url(#ow-glow)"/>
+
+    <!-- faint orbital rings framing the planet -->
+    <g fill="none">
+      <ellipse cx="720" cy="320" rx="560" ry="150" stroke="rgba(0,204,136,.10)" stroke-width="1" stroke-dasharray="4,11">
+        <animateTransform attributeName="transform" type="rotate" from="-8 720 320" to="352 720 320" dur="95s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="720" cy="320" rx="430" ry="112" stroke="rgba(0,229,255,.08)" stroke-width="1" stroke-dasharray="3,10">
+        <animateTransform attributeName="transform" type="rotate" from="6 720 320" to="-354 720 320" dur="74s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+
+    <!-- drifting karma glints -->
+    <circle r="3" fill="#f0a500" opacity=".6" filter="url(#ow-soft)"><animateMotion dur="15s" repeatCount="indefinite" path="M120,170 Q720,70 1320,200"/></circle>
+    <circle r="2.5" fill="#00cc88" opacity=".5" filter="url(#ow-soft)"><animateMotion dur="19s" repeatCount="indefinite" path="M1340,640 Q720,740 100,650"/></circle>
+    <circle r="2.5" fill="#00e5ff" opacity=".5" filter="url(#ow-soft)"><animateMotion dur="17s" begin="2s" repeatCount="indefinite" path="M200,780 Q720,840 1240,760"/></circle>
+  </svg>
   <div class="hero-kicker">OUR WORLD · WEB5 FLAGSHIP GAME</div>
 
   <div class="hero-globe">
-    <svg viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 320 320" width="290" height="290" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="pg" cx="38%" cy="32%" r="65%">
-          <stop offset="0%" stop-color="#062818"/>
-          <stop offset="60%" stop-color="#03140c"/>
-          <stop offset="100%" stop-color="#030714"/>
+        <radialGradient id="ow-sphere" cx="38%" cy="32%" r="72%">
+          <stop offset="0%" stop-color="#0e6a44"/>
+          <stop offset="52%" stop-color="#073f29"/>
+          <stop offset="100%" stop-color="#03170e"/>
         </radialGradient>
-        <radialGradient id="glow-g" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#00cc88" stop-opacity=".18"/>
-          <stop offset="100%" stop-color="#00cc88" stop-opacity="0"/>
+        <radialGradient id="ow-shade" cx="36%" cy="30%" r="78%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+          <stop offset="64%" stop-color="#000000" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity=".55"/>
         </radialGradient>
-        <clipPath id="globe-clip">
-          <circle cx="100" cy="100" r="70"/>
-        </clipPath>
-        <filter id="dot-glow">
-          <feGaussianBlur stdDeviation="2.5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
+        <clipPath id="ow-clip"><circle cx="160" cy="160" r="120"/></clipPath>
+        <filter id="ow-blur"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="ow-dot"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <!-- continent landmasses (one tile, 320 wide — duplicated for a seamless loop) -->
+        <g id="ow-land" fill="#10a066" fill-opacity=".58">
+          <path d="M38,100 C50,82 92,80 104,104 C114,126 96,150 70,150 C44,150 26,122 38,100 Z"/>
+          <path d="M150,78 C166,66 196,70 200,92 C203,112 176,122 158,114 C140,106 136,90 150,78 Z"/>
+          <path d="M212,92 C232,76 268,82 272,106 C275,126 250,142 228,136 C206,130 194,110 212,92 Z"/>
+          <path d="M120,168 C140,152 176,160 180,184 C183,208 150,224 126,212 C106,202 104,182 120,168 Z"/>
+          <path d="M78,202 C92,192 112,198 110,214 C108,228 88,232 78,222 C70,214 70,208 78,202 Z"/>
+          <path d="M236,200 C248,192 264,197 262,212 C260,224 244,228 236,218 C230,212 230,206 236,200 Z"/>
+        </g>
       </defs>
-      <!-- outer glow halo -->
-      <circle cx="100" cy="100" r="88" fill="url(#glow-g)"/>
-      <!-- planet body -->
-      <circle cx="100" cy="100" r="70" fill="url(#pg)" stroke="#00cc88" stroke-width="1.2" opacity=".75"/>
-      <!-- latitude lines (static) -->
-      <g clip-path="url(#globe-clip)" opacity=".35">
-        <ellipse cx="100" cy="100" rx="70" ry="20" fill="none" stroke="#00e5ff" stroke-width=".8"/>
-        <ellipse cx="100" cy="72"  rx="58" ry="14" fill="none" stroke="#00e5ff" stroke-width=".6"/>
-        <ellipse cx="100" cy="128" rx="58" ry="14" fill="none" stroke="#00e5ff" stroke-width=".6"/>
-        <ellipse cx="100" cy="52"  rx="40" ry="9"  fill="none" stroke="#00e5ff" stroke-width=".5"/>
-        <ellipse cx="100" cy="148" rx="40" ry="9"  fill="none" stroke="#00e5ff" stroke-width=".5"/>
+
+      <!-- atmosphere -->
+      <circle cx="160" cy="160" r="142" fill="#00cc88" opacity=".12" filter="url(#ow-blur)"/>
+      <circle cx="160" cy="160" r="129" fill="none" stroke="#00e5ff" stroke-width="1.4" opacity=".28"/>
+
+      <!-- sphere body -->
+      <circle cx="160" cy="160" r="120" fill="url(#ow-sphere)"/>
+
+      <!-- surface (clipped to the sphere) -->
+      <g clip-path="url(#ow-clip)">
+        <!-- scrolling continents = the globe spinning -->
+        <g>
+          <animateTransform attributeName="transform" type="translate" from="0 0" to="-320 0" dur="26s" repeatCount="indefinite"/>
+          <use href="#ow-land" x="0" y="0"/>
+          <use href="#ow-land" x="320" y="0"/>
+        </g>
+        <!-- latitude graticule (static) -->
+        <g fill="none" stroke="#00e5ff" stroke-width=".8" opacity=".32">
+          <ellipse cx="160" cy="160" rx="120" ry="34"/>
+          <ellipse cx="160" cy="116" rx="104" ry="24"/>
+          <ellipse cx="160" cy="204" rx="104" ry="24"/>
+          <ellipse cx="160" cy="82"  rx="72"  ry="15"/>
+          <ellipse cx="160" cy="238" rx="72"  ry="15"/>
+        </g>
+        <!-- longitude graticule (static) -->
+        <g fill="none" stroke="#00cc88" stroke-width=".8" opacity=".26">
+          <ellipse cx="160" cy="160" rx="44"  ry="120"/>
+          <ellipse cx="160" cy="160" rx="86"  ry="120"/>
+          <ellipse cx="160" cy="160" rx="114" ry="120"/>
+        </g>
+        <!-- terminator shadow + specular highlight -->
+        <circle cx="160" cy="160" r="120" fill="url(#ow-shade)"/>
+        <ellipse cx="118" cy="112" rx="34" ry="22" fill="#ffffff" opacity=".06"/>
       </g>
-      <!-- longitude lines slow spin -->
-      <g clip-path="url(#globe-clip)" class="globe-ring-slow" opacity=".3">
-        <ellipse cx="100" cy="100" rx="28" ry="70" fill="none" stroke="#00cc88" stroke-width=".9"/>
-        <ellipse cx="100" cy="100" rx="55" ry="70" fill="none" stroke="#00cc88" stroke-width=".7"/>
+
+      <!-- crisp rim -->
+      <circle cx="160" cy="160" r="120" fill="none" stroke="#00cc88" stroke-width="1.4" opacity=".5"/>
+
+      <!-- orbiting karma satellite on a tilted orbit -->
+      <g transform="rotate(-18 160 160)">
+        <ellipse cx="160" cy="160" rx="150" ry="50" fill="none" stroke="#f0a500" stroke-width="1" opacity=".22" stroke-dasharray="3,6"/>
+        <circle r="4.5" fill="#f0a500" filter="url(#ow-dot)">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M10,160 a150,50 0 1,0 300,0 a150,50 0 1,0 -300,0"/>
+        </circle>
       </g>
-      <!-- longitude lines fast spin -->
-      <g clip-path="url(#globe-clip)" class="globe-ring-fast" opacity=".18" style="animation-direction:reverse">
-        <ellipse cx="100" cy="100" rx="40" ry="70" fill="none" stroke="#00e5ff" stroke-width=".8"/>
-      </g>
-      <!-- location pin dots -->
-      <circle class="dot-pulse"  cx="122" cy="82"  r="3.5" fill="#00cc88" filter="url(#dot-glow)"/>
-      <circle class="dot-pulse2" cx="74"  cy="108" r="3"   fill="#00e5ff" filter="url(#dot-glow)"/>
-      <circle class="dot-pulse3" cx="138" cy="115" r="2.5" fill="#00cc88" filter="url(#dot-glow)"/>
-      <circle class="dot-pulse"  cx="88"  cy="75"  r="2.5" fill="#00e5ff" filter="url(#dot-glow)" style="animation-delay:.6s"/>
-      <circle class="dot-pulse2" cx="110" cy="130" r="2"   fill="#00cc88" filter="url(#dot-glow)"/>
-      <!-- equator highlight -->
-      <ellipse cx="100" cy="100" rx="70" ry="70" fill="none" stroke="#00cc88" stroke-width="1" opacity=".2"/>
     </svg>
   </div>
 
@@ -364,7 +417,7 @@ footer{--text-dim:#a8bfd8}
           <div style="font-size:13px;color:#a8bfd8;line-height:1.5">Weapons · Armour · Powerups · Runes</div>
         </div>
       </div>
-      <p style="font-size:13px;color:var(--text-dim);font-family:'Share Tech Mono',monospace;letter-spacing:.04em;margin-top:4px">More games joining the network all the time.</p>
+      <p style="font-size:13px;color:#a8bfd8;font-family:'Share Tech Mono',monospace;letter-spacing:.04em;margin-top:4px">More games joining the network all the time.</p>
     </div>
 
     <!-- AR COMBAT -->
@@ -409,31 +462,31 @@ footer{--text-dim:#a8bfd8}
     <div style="text-align:center;padding:18px 22px;background:rgba(0,204,136,.06);border:1px solid rgba(0,204,136,.18);border-radius:12px;min-width:150px">
       <div style="font-size:24px;margin-bottom:8px">👟</div>
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green)">GO OUTSIDE</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4">Head to a park or trail</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4">Head to a park or trail</div>
     </div>
     <div style="font-size:20px;color:var(--green);opacity:.4;padding:0 8px;flex-shrink:0">→</div>
     <div style="text-align:center;padding:18px 22px;background:rgba(0,204,136,.06);border:1px solid rgba(0,204,136,.18);border-radius:12px;min-width:150px">
       <div style="font-size:24px;margin-bottom:8px">🔍</div>
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green)">DISCOVER</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4">Find hidden loot &amp; monsters</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4">Find hidden loot &amp; monsters</div>
     </div>
     <div style="font-size:20px;color:var(--green);opacity:.4;padding:0 8px;flex-shrink:0">→</div>
     <div style="text-align:center;padding:18px 22px;background:rgba(0,204,136,.06);border:1px solid rgba(0,204,136,.18);border-radius:12px;min-width:150px">
       <div style="font-size:24px;margin-bottom:8px">⚔️</div>
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green)">FIGHT &amp; EQUIP</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4">Battle in AR, grab the loot</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4">Battle in AR, grab the loot</div>
     </div>
     <div style="font-size:20px;color:var(--green);opacity:.4;padding:0 8px;flex-shrink:0">→</div>
     <div style="text-align:center;padding:18px 22px;background:rgba(0,204,136,.06);border:1px solid rgba(0,204,136,.18);border-radius:12px;min-width:150px">
       <div style="font-size:24px;margin-bottom:8px">🏆</div>
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green)">DOMINATE</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4">Use real loot in-game</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4">Use real loot in-game</div>
     </div>
     <div style="font-size:20px;color:var(--green);opacity:.4;padding:0 8px;flex-shrink:0">→</div>
     <div style="text-align:center;padding:18px 22px;background:rgba(0,204,136,.06);border:1px solid rgba(0,204,136,.18);border-radius:12px;min-width:150px">
       <div style="font-size:24px;margin-bottom:8px">⚡</div>
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--green)">EARN KARMA</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text-dim);margin-top:4px;line-height:1.4">Level up across all worlds</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4">Level up across all worlds</div>
     </div>
   </div>
 </section>
@@ -658,42 +711,71 @@ footer{--text-dim:#a8bfd8}
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
-    <div>
+    <div class="footer-brand-block">
       <div class="footer-brand">OUR WORLD</div>
       <p class="footer-desc">The OASIS flagship metaverse — a geo-located AR/VR experience where real-world positive actions shape the digital world around you.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="https://ourworldthegame.com" target="_blank" class="pill green" style="font-size:10px;padding:6px 14px">OFFICIAL SITE</a>
-        <a href="https://oasisomniverse.one" target="_blank" class="pill" style="font-size:10px;padding:6px 14px">OASIS OMNIVERSE</a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>ECOSYSTEM</h4>
+        <a href="https://oasisomniverse.one" target="_blank">OASIS Omniverse</a>
+        <a href="https://web4.oasisomniverse.one" target="_blank">Web4</a>
+        <a href="https://oportal.oasisomniverse.one" target="_blank">OPORTAL</a>
+        <a href="https://starnet.oasisomniverse.one" target="_blank">STARNET</a>
+        <a href="https://ogengine.oasisomniverse.one" target="_blank">OGEngine</a>
+        <a href="https://odoom.oasisomniverse.one" target="_blank">ODOOM</a>
+        <a href="https://oquake.oasisomniverse.one" target="_blank">OQuake</a>
+        <a href="https://holonet.oasisomniverse.one" target="_blank">HoloNET</a>
+        <a href="https://founders.oasisomniverse.one" target="_blank">Founders NFT</a>
+      </div>
+      <div class="footer-col">
+        <h4>BUILD</h4>
+        <a href="https://api.web4.oasisomniverse.one/swagger" target="_blank">Web4 OASIS API</a>
+        <a href="https://api.starnet.oasisomniverse.one/swagger" target="_blank">Web5 STARNET API</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank">STAR CLI/ODK</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank">STAR API Client</a>
+        <a href="https://www.nuget.org/profiles/dellams" target="_blank">NuGet (50 pkgs)</a>
+        <a href="https://oasis-web4.gitbook.io/oasis-web4-docs/" target="_blank">GitBook Docs</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank">GitHub</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/tree/master/Docs/Devs/API%20Documentation" target="_blank">API Reference</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPER_DOCUMENTATION_INDEX.md" target="_blank">Developer Index</a>
+      </div>
+      <div class="footer-col">
+        <h4>READ</h4>
+        <a href="https://oasisomniverse.one#flightmap" target="_blank">Flight Map</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/THE_OASIS_COMPREHENSIVE_WHITEPAPER.md" target="_blank">Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OUR_WORLD_WHITEPAPER.md" target="_blank">Our World Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/INVESTOR_EVALUATION_GUIDE.md" target="_blank">Investor Guide</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/GETTING_STARTED_INDEX.md" target="_blank">Getting Started</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/STAR_CLI_Comprehensive_Guide.md" target="_blank">STAR CLI Guide</a>
+        <a href="https://www.oasisweb4.com/holonic-architecture" target="_blank">Holonic Architecture</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/WIKI_DOCUMENTATION_INDEX.md" target="_blank">Wiki</a>
+        <a href="https://www.ourworldthegame.com/blog" target="_blank">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>COMMUNITY</h4>
+        <a href="https://discord.gg/q9gMKU6" target="_blank">Discord</a>
+        <a href="https://t.me/ourworldthegame" target="_blank">Telegram</a>
+        <a href="https://x.com/OASISWEB4" target="_blank">𝕏 OASIS WEB4</a>
+        <a href="https://x.com/OurWorldTheGame" target="_blank">𝕏 Our World</a>
+        <a href="https://x.com/HoloNET_OASIS" target="_blank">𝕏 HoloNET</a>
+        <a href="https://www.youtube.com/@WEB4OASIS" target="_blank">YouTube OASIS</a>
+        <a href="https://www.youtube.com/@ourworld-the-game" target="_blank">YouTube Our World</a>
+        <a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank">YouTube Our World Legacy</a>
+        <a href="https://www.facebook.com/ourworldthegame" target="_blank">Facebook</a>
+      </div>
+      <div class="footer-col">
+        <h4>SUPPORT</h4>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/issues" target="_blank">Report an Issue</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/discussions" target="_blank">Discussions</a>
+        <a href="https://tally.so/r/WOZjNa" target="_blank">Submit a Support Ticket</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>ECOSYSTEM</h4>
-      <a href="https://oasisomniverse.one" target="_blank">OASIS Omniverse</a>
-      <a href="https://starnet.oasisomniverse.one" target="_blank">STARNET</a>
-      <a href="https://oportal.oasisomniverse.one" target="_blank">OPORTAL</a>
-      <a href="https://holonet.oasisomniverse.one" target="_blank">HoloNET</a>
-      <a href="https://ogengine.oasisomniverse.one" target="_blank">OGEngine</a>
-      <a href="https://odoom.oasisomniverse.one" target="_blank">ODOOM</a>
-      <a href="https://oquake.oasisomniverse.one" target="_blank">OQUAKE</a>
-    </div>
-    <div class="footer-col">
-      <h4>RESOURCES</h4>
-      <a href="https://ourworldthegame.com" target="_blank">Official Website</a>
-      <a href="https://oasisomniverse.one/founders" target="_blank">Founders NFT</a>
-      <a href="https://oasisomniverse.one#flightmap" target="_blank">Flight Map</a>
-      <a href="https://github.com/NextGenSoftwareUK" target="_blank">GitHub</a>
-    </div>
-    <div class="footer-col">
-      <h4>COMMUNITY</h4>
-      <a href="https://discord.gg/q9gMKU6" target="_blank">Discord</a>
-      <a href="https://twitter.com/ourworldthegame" target="_blank">X / Twitter</a>
-      <a href="https://www.youtube.com/@ourworld-the-game" target="_blank">YouTube Our World</a>
-      <a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank">YouTube Our World Legacy</a>
-      <a href="https://t.me/ourworldthegame" target="_blank">Telegram</a>
-      <a href="https://founders.oasisomniverse.one" target="_blank">Founders NFT</a>
-    </div>
+  <div class="footer-copy" style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+    <p>© 2026 <a href="https://nextgenworld.co.uk">NextGen Software Ltd.</a> All rights reserved.</p>
+    <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
   </div>
-  <p class="footer-copy">© 2026 NextGen Software Ltd · Our World is part of the OASIS Omniverse ecosystem · <a href="https://oasisomniverse.one" style="color:inherit;text-decoration:none">oasisomniverse.one</a></p>
+  </div>
 </footer>
 
 <script>
