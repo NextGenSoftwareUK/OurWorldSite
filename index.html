@@ -70,7 +70,8 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .overview-text p:last-child{margin-bottom:0}
 .overview-img{border-radius:16px;overflow:hidden;border:1px solid var(--border-g);box-shadow:0 0 60px rgba(0,204,136,.08)}
 .overview-img img{width:100%;display:block}
-@media(max-width:800px){.overview-grid{grid-template-columns:1fr;gap:36px}}
+@media(max-width:800px){.overview-grid{grid-template-columns:1fr;gap:36px}.karma-examples{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.karma-examples{grid-template-columns:1fr}}
 
 /* ── FEATURE CARDS ── */
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;max-width:1100px;margin:0 auto}
@@ -94,7 +95,7 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .karma-step-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--green)}
 .karma-step-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4}
 .karma-arrow{font-size:22px;color:var(--green);opacity:.5;padding:0 8px;flex-shrink:0}
-.karma-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;max-width:none;margin:0 auto}
+.karma-examples{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:none;margin:0 auto}
 .karma-eg{display:flex;align-items:center;gap:12px;background:rgba(0,204,136,.05);border:1px solid rgba(0,204,136,.14);border-radius:10px;padding:14px 18px}
 .karma-eg-icon{font-size:20px;flex-shrink:0}
 .karma-eg-text{font-size:16px;color:#a8bfd8;line-height:1.4}
@@ -134,13 +135,13 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .cta-sub{font-size:16px;color:#a8bfd8;max-width:none;margin:0 auto 36px;line-height:1.75}
 
 /* ── FOOTER ── */
-footer{position:relative;z-index:2;padding:60px 40px 36px;border-top:1px solid rgba(255,255,255,.06)}
+footer{position:relative;z-index:2;padding:60px 0 36px;border-top:1px solid rgba(255,255,255,.06)}
 footer{--text-dim:#a8bfd8}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 1rem}.footer-brand-block{text-align:center;margin-bottom:3.5rem}.footer-brand-block .footer-desc{max-width:none;margin:0 auto 1rem}.footer-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-bottom:2rem}
+.footer-inner{max-width:1180px;margin:0 auto;padding:0 40px}.footer-brand-block{text-align:center;margin-bottom:3.5rem}.footer-brand-block .footer-desc{max-width:none;margin:0 auto 1rem}.footer-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-bottom:2rem}
 .footer-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--green);margin-bottom:12px;text-align:center}
 .footer-desc{font-size:16px;color:#a8bfd8;line-height:1.7;margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center}
 .footer-col h4{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.15em;color:var(--green);margin-bottom:14px}
-.footer-col a{display:block;font-size:16px;color:#a8bfd8;text-decoration:none;margin-bottom:8px;transition:color .2s}
+.footer-col a{display:block;font-size:16px;color:#a8bfd8;text-decoration:none;margin-bottom:8px;transition:filter .3s ease,color .3s ease}
 footer a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(0,204,136,.8)) drop-shadow(0 0 40px rgba(0,204,136,.4))}
 ..footer-copy{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:1rem}
 .footer-copy p{color:#a8bfd8;font-size:.82rem}
@@ -624,14 +625,14 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
       <div class="feat-icon">🪪</div>
       <div class="feat-kicker">IDENTITY</div>
       <div class="feat-title">OPORTAL + WEB4 AVATAR</div>
-      <div class="feat-desc">One universal avatar, wallet and karma score that travels across every OASIS world. OPORTAL is your dashboard — manage your identity, assets and reputation in one place.</div>
+      <div class="feat-desc">One universal avatar, wallet and karma score that travels across every OASIS world. OPORTAL is your dashboard — manage your identity, assets and reputation in one place. Sign in once with Web4 Avatar SSO and you're recognised instantly in Our World, STARNET, ODOOM, OQUAKE and every other connected world, with your inventory, reputation and progress carried across all of them.</div>
       <a href="https://oportal.oasisomniverse.one" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);text-decoration:none;opacity:.8">OPEN OPORTAL →</a>
     </div>
     <div class="feat-card reveal">
       <div class="feat-icon">⭐</div>
       <div class="feat-kicker">APP ECOSYSTEM</div>
       <div class="feat-title">WEB5 STAR API + STARNET</div>
-      <div class="feat-desc">Publish OAPPs, discover community content and deploy quests across the omniverse via STARNET. Our World's quest economy runs on the STAR ODK.</div>
+      <div class="feat-desc">Publish OAPPs, discover community content and deploy quests across the omniverse via STARNET. Our World's quest economy runs on the STAR ODK. Every quest, mission and GeoNFT you encounter is a versioned holon published through STARNET's app store, so new content keeps shipping from the whole creator community — not just the core team.</div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="https://starnet.oasisomniverse.one" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);text-decoration:none;opacity:.8">EXPLORE STARNET →</a>
         <a href="https://api.starnet.oasisomniverse.one" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);text-decoration:none;opacity:.8">STAR API →</a>
@@ -641,7 +642,8 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
       <div class="feat-icon">🚀</div>
       <div class="feat-kicker">PROVIDER LAYER</div>
       <div class="feat-title">HYPERDRIVE</div>
-      <div class="feat-desc">The abstraction engine beneath the OASIS API — seamlessly bridges 50+ Web2 and Web3 platforms so Our World can read and write data anywhere without locking into any single chain or service.</div>
+      <div class="feat-desc">The abstraction engine beneath the OASIS API — seamlessly bridges 50+ Web2 and Web3 platforms so Our World can read and write data anywhere without locking into any single chain or service. Auto-failover, auto-replication and load balancing route every request across the strongest available provider, so the game keeps running even if any single chain or database goes down.</div>
+      <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_HYPERDRIVE_WHITEPAPER.md" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);text-decoration:none;opacity:.8">HYPERDRIVE WHITEPAPER →</a>
     </div>
     <div class="feat-card reveal" style="border-color:rgba(0,204,136,.2)">
       <div class="feat-icon">🎮</div>
@@ -753,6 +755,12 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
         <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank">GitHub</a>
         <a href="https://github.com/NextGenSoftwareUK/OASIS/tree/master/Docs/Devs/API%20Documentation" target="_blank">API Reference</a>
         <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPER_DOCUMENTATION_INDEX.md" target="_blank">Developer Index</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS_Quick_Start_Guide.md" target="_blank">Quick Start Guide</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS_ARCHITECTURE_OVERVIEW.md" target="_blank">Architecture Overview</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPMENT_ENVIRONMENT_SETUP.md" target="_blank">Environment Setup</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS-BEST-PRACTICES.md" target="_blank">Best Practices</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DOCKER_DEPLOYMENT_GUIDE.md" target="_blank">Docker Deployment Guide</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/OASIS-Runtime-v4.5.1" target="_blank">OASIS Runtime v4.5.1</a>
       </div>
       <div class="footer-col">
         <h4>READ</h4>
@@ -765,6 +773,12 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
         <a href="https://www.oasisweb4.com/holonic-architecture" target="_blank">Holonic Architecture</a>
         <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/WIKI_DOCUMENTATION_INDEX.md" target="_blank">Wiki</a>
         <a href="https://www.ourworldthegame.com/blog" target="_blank">Blog</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_Lite_Paper.md" target="_blank">OASIS Lite Paper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_HYPERDRIVE_WHITEPAPER.md" target="_blank">HyperDrive Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_COSMIC_ORM_WHITEPAPER.md" target="_blank">Cosmic ORM Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_NFT_SYSTEM_WHITEPAPER.md" target="_blank">NFT System Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_UNIVERSAL_WALLET_WHITEPAPER.md" target="_blank">Universal Wallet Whitepaper</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_TECHNOLOGY_SUMMARY_AND_USE_CASES.md" target="_blank">Use Cases</a>
       </div>
       <div class="footer-col">
         <h4>FOUNDERS</h4>
@@ -777,9 +791,9 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
         <h4>COMMUNITY</h4>
         <a href="https://discord.gg/q9gMKU6" target="_blank">Discord</a>
         <a href="https://t.me/ourworldthegame" target="_blank">Telegram</a>
-        <a href="https://x.com/OASISWEB4" target="_blank">𝕏 OASIS WEB4</a>
-        <a href="https://x.com/OurWorldTheGame" target="_blank">𝕏 Our World</a>
-        <a href="https://x.com/HoloNET_OASIS" target="_blank">𝕏 HoloNET</a>
+        <a href="https://x.com/OASISWEB4" target="_blank">X OASIS WEB4</a>
+        <a href="https://x.com/OurWorldTheGame" target="_blank">X Our World</a>
+        <a href="https://x.com/HoloNET_OASIS" target="_blank">X HoloNET</a>
         <a href="https://www.youtube.com/@WEB4OASIS" target="_blank">YouTube OASIS</a>
         <a href="https://www.youtube.com/@ourworld-the-game" target="_blank">YouTube Our World</a>
         <a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank">YouTube Our World Legacy</a>
@@ -790,6 +804,8 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
         <a href="https://github.com/NextGenSoftwareUK/OASIS/issues" target="_blank">Report an Issue</a>
         <a href="https://github.com/NextGenSoftwareUK/OASIS/discussions" target="_blank">Discussions</a>
         <a href="https://tally.so/r/WOZjNa" target="_blank">Submit a Support Ticket</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/CONTRIBUTING.md" target="_blank">Contributing</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a>
       </div>
     </div>
   <div class="footer-copy" style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
