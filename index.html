@@ -146,6 +146,15 @@ footer a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) 
 ..footer-copy{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:1rem}
 .footer-copy p{color:#a8bfd8;font-size:.82rem}
 .footer-copy a{color:#a8bfd8;text-decoration:none}.footer-copy a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(0,204,136,.8)) drop-shadow(0 0 40px rgba(0,204,136,.4))}
+@media(max-width:720px){
+  .footer-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 18px}
+  .footer-copy{flex-direction:column;align-items:center;text-align:center;gap:.6rem}
+}
+@media(max-width:520px){
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px}
+  .footer-col a{font-size:13px;line-height:1.35}
+  .footer-copy p{font-size:.76rem;line-height:1.5}
+}
 
 /* ── GLOBE ANIMATION ── */
 @keyframes globeSpin{to{transform:rotateY(360deg)}}
