@@ -34,7 +34,19 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .nav-cta:hover{background:rgba(0,204,136,.08);border-color:rgba(0,204,136,.6)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--green);border-radius:2px}
-@media(max-width:800px){.nav{padding:0 20px}.nav-links{display:none}.nav-hamburger{display:flex}}
+@media(max-width:800px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-links.open{
+    display:flex;flex-direction:column;gap:0;
+    position:absolute;top:64px;left:0;right:0;
+    background:rgba(3,7,20,.97);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    padding:10px 0;margin-left:0;z-index:99;
+  }
+  .nav-links.open a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.05)}
+}
 
 /* ── SECTIONS ── */
 .section{position:relative;z-index:2;padding:90px 40px;max-width:1180px;margin:0 auto}
@@ -189,14 +201,17 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
     OASIS <span>/ OUR WORLD</span>
   </a>
   <div class="nav-links">
+    <a href="#overview">OVERVIEW</a>
     <a href="#features">FEATURES</a>
+    <a href="#real-world">REAL WORLD</a>
     <a href="#karma">KARMA</a>
     <a href="#videos">VIDEOS</a>
+    <a href="#oasis">OASIS INTEGRATION</a>
     <a href="#roadmap">ROADMAP</a>
     <a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a>
   </div>
   <a href="https://ourworldthegame.com" target="_blank" class="nav-cta">EXPLORE</a>
-  <div class="nav-hamburger" onclick="this.classList.toggle('open')"><span></span><span></span><span></span></div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -846,6 +861,10 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
 // Scroll reveal
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Mobile nav toggle
+function toggleMenu(){document.querySelector('.nav-links').classList.toggle('open')}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open')}));
 </script>
 </body>
 </html>
