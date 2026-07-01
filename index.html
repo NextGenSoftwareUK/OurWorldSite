@@ -107,14 +107,14 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .karma-step-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--green)}
 .karma-step-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#a8bfd8;margin-top:4px;line-height:1.4}
 .karma-arrow{font-size:22px;color:var(--green);opacity:.5;padding:0 8px;flex-shrink:0}
-.karma-examples{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:none;margin:0 auto}
+.karma-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px;max-width:none;margin:0 auto}
 .karma-eg{display:flex;align-items:center;gap:12px;background:rgba(0,204,136,.05);border:1px solid rgba(0,204,136,.14);border-radius:10px;padding:14px 18px}
 .karma-eg-icon{font-size:20px;flex-shrink:0}
 .karma-eg-text{font-size:16px;color:#a8bfd8;line-height:1.4}
 .karma-eg-pts{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--green);margin-left:auto;flex-shrink:0;padding-left:8px}
 
 /* ── VIDEO GRID ── */
-.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px;max-width:1100px;margin:0 auto}
 .vid-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .vid-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,204,136,.07)}
 .vid-frame{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
@@ -200,14 +200,13 @@ footer a:hover{color:var(--green);filter:drop-shadow(0 0 8px rgba(0,204,136,1)) 
   .nav-cta{display:none}
   .nav-links.open a.nav-cta-mobile{display:block;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;text-decoration:none}
   .hero{padding:80px 20px 60px}
-  .hero-globe svg{width:200px!important;height:200px!important}
   .footer-inner{padding:0 20px}
   .karma-band,.integration-band,.cta-band{padding:60px 20px}
   .karma-inner{padding:0}
+  .overview-btns{justify-content:center}
 }
 @media(max-width:520px){
   .hero{padding:70px 14px 50px}
-  .hero-globe svg{width:150px!important;height:150px!important}
   .footer-inner{padding:0 14px}
   .karma-band,.integration-band,.cta-band{padding:48px 14px}
   .hero-badges{gap:6px}
@@ -398,7 +397,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(0,204,136,1)) drop-shadow(0 0 20px rgba(
       <p>Our World is not just a game — it's a movement. Built on the OASIS platform and powered by OGEngine, it overlays a rich digital world onto the real one using augmented and virtual reality, anchored to real GPS coordinates around the globe.</p>
       <p>Every location you visit, every positive action you take — planting trees, helping neighbours, volunteering, reducing waste — earns <strong style="color:var(--green)">Karma</strong>. Karma is your currency, your reputation, and your power in Our World. As it grows it raises your max health, armour, mana, stamina, ammo and movement speed — and at high karma levels unlocks superpowers: flight, telekinesis, teleportation, super speed, super strength and more — that carry across every OASIS game.</p>
       <p>Quests, achievements and inventory are shared across the entire OASIS Omniverse via OGEngine — complete a mission in ODOOM, carry the rewards into Our World. One unified identity. One interconnected universe.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+      <div class="overview-btns" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
         <a href="https://ourworldthegame.com" target="_blank" class="btn-primary">VISIT OFFICIAL SITE</a>
         <a href="https://oasisomniverse.one" target="_blank" class="btn-green">OASIS ECOSYSTEM</a>
       </div>
