@@ -36,16 +36,18 @@ canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--green);border-radius:2px}
 @media(max-width:800px){
   .nav{padding:0 20px}
-  .nav-links{display:none}
   .nav-hamburger{display:flex}
-  .nav-links.open{
+  .nav-links{
     display:flex;flex-direction:column;gap:0;
-    position:absolute;top:64px;left:0;right:0;
+    position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);
+    justify-content:center;align-items:flex-start;
     background:rgba(3,7,20,.97);backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--border);
-    padding:10px 0;margin-left:0;z-index:99;
+    border-left:1px solid var(--border);
+    padding:40px;margin-left:0;z-index:999;
+    transform:translateX(100%);transition:transform .3s ease;
   }
-  .nav-links.open a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);width:100%}
 }
 
 /* ── SECTIONS ── */
